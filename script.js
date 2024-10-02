@@ -18,9 +18,10 @@ TypingArea.addEventListener('focus',()=>{
     const StartTime = Date.now();
     setInterval(()=>{
         let currentTime = (Date.now()-StartTime)/60000;
-        let TypedWords = TypingArea.value.trim().split(/\s+/).length;
+
+        let TypedWords = TypingArea.value.trim().split(/\s+/).filter(word=>word.length>0).length;
         let CharSpeed = Math.round(TypedWords / currentTime);
         Accuracy.textContent = Math.round(CharSpeed);
-        Speed.textContent = TypedWords;
+        // Speed.textContent = TypedWords;
     },1000)
 })
