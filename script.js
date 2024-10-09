@@ -48,6 +48,7 @@ function NetSpeedCheck(){
     let acc = 0;
     let TypedWords = TypingArea.value.trim().split(/\s+/);
     let SelectedParaArr = SelectedPara.trim().split(/\s+/);
+    
     for(i = 0; i<TypedWords.length; i++){
         if(i < TypedWords.length && TypedWords[i] === SelectedParaArr[i]){
             acc++;
