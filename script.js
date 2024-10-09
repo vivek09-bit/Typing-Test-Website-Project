@@ -24,7 +24,7 @@ function Timer()
         let currentTime = Math.floor((Date.now()-StartTime)/1000);
         let WpmDisplay= calculateWPM(StartTime);
 
-        NetSpeedDisplay.textContent =`NetSpeed: ${NetSpeedCheck()}`;
+        NetSpeedDisplay.textContent =`NetSpeed: ${NetSpeedCheck(StartTime)}`;
         WPM.textContent = `WPM: ${WpmDisplay}`;
         ShowTimer.textContent = `Time: ${currentTime}`;
 
@@ -44,7 +44,7 @@ function calculateWPM(StartTime){
 }
 
 
-function NetSpeedCheck(){
+function NetSpeedCheck(StartTime){
     let acc = 0;
     let TypedWords = TypingArea.value.trim().split(/\s+/);
     let SelectedParaArr = SelectedPara.trim().split(/\s+/);
@@ -54,7 +54,9 @@ function NetSpeedCheck(){
             acc++;
         }
     }
-    return acc;
+    let InTime = (Date.now() - StartTime)/60000;
+    let NWPM = Math.floor(acc/InTime)
+    return NWPM;
 };
 
 function paras(){
